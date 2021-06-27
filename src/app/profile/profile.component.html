@@ -1,0 +1,123 @@
+<div class="container-fluid">
+  <div *ngIf="isDataLoaded(); then loader; else story;"></div>
+  <ng-template #loader>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border vc" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #story>
+    <div *ngIf="!profile">
+      <div class="d-flex justify-content-center">
+        <div class="vc">
+          {{invalidProfileMessage}}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="profile">
+      <div class="row dir-rtl fixed-height">
+        <div class="dir-ltr col-lg-4">
+          <div class="card container-fluid sticky-top">
+            <div class="row">
+              <div class="col-sm-8 profile">
+                <p class="profile-title">{{profile.title}}</p>
+                <p class="profile-headline">
+                  {{profile.headline}}
+                </p>
+                <p>{{profile.about}}</p>
+              </div>
+              <div class="col-sm-4 mx-auto text-center" *ngIf="profile.dp">
+                <img class="img-fluid rounded-circle avatar" [src]="profile.dp"
+                  alt="Profile Pic" />
+              </div>
+            </div>
+            <div class="row">
+              <ul>
+                <li>
+                  A Node.js and Mongo db professional with around 3 years of
+                  experience in the MEAN stack development.
+                </li>
+                <li>
+                  Good at understanding of the product and
+                  architecture, quick analysis and debugging skills.
+                </li>
+                <li>
+                  Developed end to end APIs for multiple
+                  projects
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <a [title]="profile.mobile"
+                  [href]="'tel:' + profile.mobile">{{profile.mobile}}</a>
+              </div>
+              <div class="col text-center">
+                <a [title]="profile.email"
+                  [href]="'mailto:' + profile.email">{{profile.email}}</a>
+              </div>
+
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="row">
+            </div>
+          </div>
+        </div>
+        <div class="dir-ltr col-lg-4 p-0 m-0">
+          <div class="my-timeline">
+            <ul class="timeline">
+              <li class="no-style">
+                <h4>Work timeline</h4>
+              </li>
+              <li *ngFor="let company of profile.timeline">
+                <div class="card">
+                  <h4>{{company.name}}</h4>
+                  <p class="work-position my-1 p-0">{{company.position}}</p>
+                  <p class="work-period my-1 p-0" *ngIf="company.from">
+                    {{company.from}} To
+                    {{company.to || 'Present'}}
+                  </p>
+                  <p class="work-about" *ngIf="company.about">
+                    {{company.about}}
+                  </p>
+                  <div class="work-responsibilities"
+                    *ngIf="company.responsibilities">
+                    <b>Responsibilities</b>
+                    <ul class="p-0">
+                      <li *ngFor="let cs of company.responsibilities">{{cs}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="dir-ltr col-lg-4 p-0 m-0">
+          <div class="my-timeline p-1">
+            <h4>Other than work</h4>
+            <div class="projects" *ngIf="profile.projects">
+              <h5>Projects</h5>
+              <div *ngFor="let project of profile.projects">
+                <div class="card">
+                  <h4>{{project.name}}</h4>
+                  <p>{{project.about}}</p>
+                  <a [href]="project.url" target="blank">{{project.name}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a routerLink="/about" class="website-info">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+            fill-rule="evenodd" clip-rule="evenodd">
+            <path
+              d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm.5 17h-1v-9h1v9zm-.5-12c.466 0 .845.378.845.845 0 .466-.379.844-.845.844-.466 0-.845-.378-.845-.844 0-.467.379-.845.845-.845z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</div>

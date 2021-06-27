@@ -1,1 +1,175 @@
-/* You can add global styles to this file, and also import other style files */
+/*  */
+@import url('assets/font.css');
+
+$dark: #000000;
+$brightness: 1;
+$bg-l1: #4c4d4e;
+$fg-l1: #afafaf;
+$font-family: 'Itim';
+$avatar-brightness: 0.8;
+$bg-card-shadow: #2e2e2e;
+
+
+@media (max-width: 300px) {
+  .profile {
+    text-align: center;
+  }
+}
+
+@media (min-width: 500px) {
+  .about {
+    height: 96vh !important;
+  }
+}
+
+body {
+  color: $fg-l1;
+  background-color: $bg-l1;
+  font-family: $font-family;
+  filter: brightness($brightness);
+}
+
+.vc {
+  margin-top: 25%;
+}
+
+.about {
+  // margin-top: 1vh;
+  height: 90vh;
+}
+
+.homelink,
+.homelink:hover {
+  text-decoration: none;
+  color: $fg-l1;
+}
+
+.samplelink,
+.samplelink:hover {
+  color: $fg-l1;
+}
+
+
+.website-info {
+  position: sticky;
+  bottom: 10px;
+  right: 25px;
+  z-index: 9999;
+}
+
+.about-info {
+  position: fixed;
+  bottom: -16px;
+  right: 0px;
+  z-index: 9999;
+}
+
+svg {
+  vertical-align: top;
+}
+
+.my-timeline {
+  max-height: 96vh;
+  overflow-y: auto;
+}
+
+@-moz-document url-prefix() {
+
+  /* Disable scrollbar Firefox */
+  html {
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.dir-rtl {
+  direction: rtl;
+}
+
+.dir-ltr {
+  direction: ltr;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+.profile-title {
+  font-size: 1.4em;
+}
+
+.profile-headline,
+.work-position,
+.work-period,
+.work-about {
+  font-size: .9em;
+}
+
+.profile-pic {
+  object-fit: cover;
+}
+
+
+.avatar {
+  width: 125px;
+  height: 125px;
+  filter: brightness($brightness)
+}
+
+.card {
+  padding: 2%;
+  border: 0;
+  background-color: $bg-l1;
+  box-shadow: 0 2px 5px 0 $bg-card-shadow;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 3px 10px 0 $bg-card-shadow;
+}
+
+
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+ul.timeline:before {
+  content: ' ';
+  background: #646566;
+  display: inline-block;
+  position: absolute;
+  left: 16px;
+  width: 1px;
+  height: 100%;
+  z-index: 400;
+}
+
+
+ul.timeline>li {
+  margin: 10px 12px 10px 0;
+  padding-left: 0px;
+}
+
+ul.timeline>li:before {
+  content: ' ';
+  background: rgb(88, 88, 88);
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #000000;
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  z-index: 400;
+}
+
+ul.timeline>li.no-style::before {
+  width: 0;
+  height: 0;
+  border: none;
+}
